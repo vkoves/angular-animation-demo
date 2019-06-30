@@ -1,0 +1,15 @@
+@import '../scss/colors';
+@import '../scss/spacing';
+
+:host {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+}
+
+header, main, footer { padding: $standard; }
+
+header { background-color: $orange; }
+
+footer { background-color: $light-grey; }
+
