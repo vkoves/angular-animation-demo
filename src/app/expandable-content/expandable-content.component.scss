@@ -1,0 +1,37 @@
+@import '../../scss/colors';
+@import '../../scss/spacing';
+
+:host {
+  display: block;
+}
+
+// The standard border-radius to use on the button and the content
+$rad: 0.5rem;
+
+button.preview {
+  width: 100%;
+  padding: $standard;
+  border: none;
+  color: $text-dark;
+  background-color: $orange;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: $rad $rad 0 0;
+
+  &:hover, &:focus {
+    background-color: $orange-dark;
+  }
+}
+
+.content {
+  background-color: $light-grey;
+  padding: $standard;
+  border-radius: 0 0 $rad $rad;
+  overflow: hidden;
+
+  img {
+    width: 30rem;
+    max-width: 100%;
+  }
+}
+

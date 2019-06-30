@@ -1,0 +1,39 @@
+<button class="preview" [ngClass]="{ '-open': isOpen }" (click)="toggleOpen()">
+  Some Preview Text (Read More)
+</button>
+
+<!-- We need a cont so we can use transform to slide the content in & out -->
+<div class="content" [ngClass]="{ '-open': isOpen }"
+  [@openClose]="isOpen ? 'open' : 'closed'">
+  <button (click)="changeContent(ContentSize.small)">Show Small Content</button>
+  <button (click)="changeContent(ContentSize.medium)">Show Medium Content</button>
+  <button (click)="changeContent(ContentSize.large)">Show Large Content</button>
+
+  <p>
+    This is some really compelling text. It is super duper compelling. So
+    compelling that you just find yourself reading more and more. Do you want
+    to keep reading, or do you just feel so compelled to keep going that you
+    cannot stop?
+  </p>
+
+  <img *ngIf="[ContentSize.medium, ContentSize.large].includes(contentAmount)"
+    src="http://lorempixel.com/output/nightlife-q-c-640-480-4.jpg"
+    alt="Busy city street at night">
+
+  <div *ngIf="contentAmount === ContentSize.large">
+    <p>
+      Oh wow, we even tossed in an image! Here is a bunch more text for you to
+      read and to take up space:
+    </p>
+
+    <p>
+      Bacon ipsum dolor amet spare ribs swine corned beef fatback bresaola
+      beef ribs. Chuck capicola corned beef, bresaola pork picanha short loin
+      ground round meatloaf. Spare ribs pancetta shankle ground round,
+      kielbasa flank filet mignon meatloaf bresaola bacon buffalo jowl
+      landjaeger andouille venison. Pork loin doner flank leberkas, hamburger
+      biltong ribeye jerky. Spare ribs flank strip steak turkey fatback ham
+      bresaola jowl.
+    </p>
+  </div>
+</div>
