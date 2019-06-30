@@ -1,5 +1,15 @@
-$orange:      #ffaa52;
-$orange-dark: #ff931f;
-$light-grey:  #dedede;
+$orange:        #ffaa52;
+$orange-light:  #ffdeba;
+$orange-dark:   #ff931f;
+$light-grey:    #dedede;
 
-$text-dark:   #4d4d4d;
+$text-lighter:  #4d4d4d;
+$text-dark:     #2f2f2f;
+
+/**
+ * Utilities
+ */
+
+// Color for outline/border on :focus
+$focus-color:   #2525bd;
+

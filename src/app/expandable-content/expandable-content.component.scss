@@ -18,8 +18,15 @@ button.preview {
   font-weight: bold;
   border-radius: $rad $rad 0 0;
 
-  &:hover, &:focus {
-    background-color: $orange-dark;
+  &:hover, &:focus { background-color: $orange-dark; }
+  // Use border on focus so animations show up
+  &:focus {
+    outline: none;
+    border: solid 2px $focus-color;
+  }
+  &:not(:focus) {
+    // Apply transparent border so focus does not change spacing
+    border: solid 2px transparent;
   }
 }
 

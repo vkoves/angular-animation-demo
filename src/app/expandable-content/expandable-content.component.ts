@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
   animate,
+  keyframes,
   state,
   style,
   transition,
@@ -19,18 +20,49 @@ enum ContentSize {
   templateUrl: './expandable-content.component.html',
   styleUrls: ['./expandable-content.component.scss'],
   animations: [
-    trigger('openClose', [
-      transition('open <=> closed', [
-        animate('0.5s ease-in-out')
-      ]),
+    trigger('openCloseButton', [
       state('closed', style({
-        height: '0px',
-        'padding-top': '0px',
-        'padding-bottom': '0px'
+        'border-radius': '0.5rem'
       })),
       state('open', style({
-        height: '500px'
-      }))
+        'border-radius': '0.5rem 0.5rem 0 0'
+      })),
+      transition('open => closed', [
+        // Delay 0.5s for content close animation to mostly complete,
+        animate('0.3s 0.3s ease-in-out')
+      ]),
+      transition('closed => open', [
+        animate('0.3s ease-in-out')
+      ])
+    ]),
+    trigger('openCloseContent', [
+      state('closed', style({
+        height: '0px',
+        'display': 'none',
+        'padding-top': '0',
+        'padding-bottom': '0'
+      })),
+      state('open', style({
+        height: '*' // pull height from runtime so we use content size
+      })),
+      transition('open => closed', [
+        animate('0.5s ease-in-out', keyframes([
+          style({ display: 'block', offset: 0 }),
+          style({ height: 0, offset: 1 }),
+          style({ 'padding-top': 0, offset: 1 }),
+          style({ 'padding-bottom': 0, offset: 1 }),
+          style({ display: 'none', offset: 1 })
+        ]))
+      ]),
+      transition('closed => open', [
+        animate('0.5s ease-in-out', keyframes([
+          style({ display: 'block', offset: 0 }),
+          style({ height: '*', offset: 1 }),
+          style({ 'padding-top': '*', offset: 1 }),
+          style({ 'padding-bottom': '*', offset: 1 }),
+          style({ display: 'block', offset: 1 })
+        ]))
+      ]),
     ])
   ]
 })

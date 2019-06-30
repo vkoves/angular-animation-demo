@@ -3,24 +3,36 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
 @import './scss/colors';
+@import './scss/spacing';
 
 body {
   padding: 0;
   margin: 0;
+  font-size: 16px; // set 1rem to 16px
 }
 
 // Apply font and color by default to all elements
 body, body * {
   font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
   color: $text-dark;
 
   // Override focus outline for all elements
   &:focus {
-    outline: dashed 2px #2525bd;
+    outline: solid 2px $focus-color;
   }
 }
 
-p {
-  max-width: 800px;
+button { font-size: 1rem; }
+
+// Set paragraph width for readability
+p { max-width: 800px; }
+
+.toggle-btn {
+  background-color: $orange-light;
+  border: none;
+  padding: $tiny $small;
+
+  &.-active { background-color: $orange-dark; }
+  + .toggle-btn { border-left: solid 2px $orange; }
 }
+

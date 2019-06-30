@@ -1,13 +1,27 @@
-<button class="preview" [ngClass]="{ '-open': isOpen }" (click)="toggleOpen()">
+<button class="preview" [ngClass]="{ '-open': isOpen }"
+    (click)="toggleOpen()"
+    [@openCloseButton]="isOpen ? 'open' : 'closed'">
   Some Preview Text (Read More)
 </button>
 
 <!-- We need a cont so we can use transform to slide the content in & out -->
 <div class="content" [ngClass]="{ '-open': isOpen }"
-  [@openClose]="isOpen ? 'open' : 'closed'">
-  <button (click)="changeContent(ContentSize.small)">Show Small Content</button>
-  <button (click)="changeContent(ContentSize.medium)">Show Medium Content</button>
-  <button (click)="changeContent(ContentSize.large)">Show Large Content</button>
+  [@openCloseContent]="isOpen ? 'open' : 'closed'">
+  <button class="toggle-btn"
+      [ngClass]="{ '-active': contentAmount === ContentSize.small }"
+      (click)="changeContent(ContentSize.small)">
+    Show Small Content
+  </button>
+  <button class="toggle-btn"
+      [ngClass]="{ '-active': contentAmount === ContentSize.medium }"
+      (click)="changeContent(ContentSize.medium)">
+    Show Medium Content
+  </button>
+  <button class="toggle-btn"
+      [ngClass]="{ '-active': contentAmount === ContentSize.large }"
+      (click)="changeContent(ContentSize.large)">
+    Show Large Content
+  </button>
 
   <p>
     This is some really compelling text. It is super duper compelling. So
