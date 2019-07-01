@@ -13,7 +13,7 @@ enum ContentSize {
   small,
   medium,
   large
-};
+}
 
 @Component({
   selector: 'app-expandable-content',
@@ -38,7 +38,7 @@ enum ContentSize {
     trigger('openCloseContent', [
       state('closed', style({
         height: '0px',
-        'display': 'none',
+        display: 'none',
         'padding-top': '0',
         'padding-bottom': '0'
       })),
@@ -67,10 +67,10 @@ enum ContentSize {
   ]
 })
 export class ExpandableContentComponent implements OnInit {
-  private readonly ContentSize = ContentSize;
+  public readonly ContentSize = ContentSize;
 
-  private isOpen: boolean;
-  private contentAmount: ContentSize;
+  public isOpen: boolean;
+  public contentAmount: ContentSize;
 
   constructor() { }
 
